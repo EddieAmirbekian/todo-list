@@ -1,0 +1,39 @@
+<div class="todo__page">
+  <h1>
+    <b>To-Do List</b>
+  </h1>
+  <form style="display: flex; flex-direction: column; align-items: center; width: 100%; margin-bottom: 2rem">
+    <mat-form-field appearance="fill" style="width: 100%">
+      <mat-label>Content</mat-label>
+      <input matInput placeholder="Enter todo content" [formControl]="todoControl"/>
+    </mat-form-field>
+    <button type="button" mat-raised-button color="primary" style="width: 25%" (click)="addTodo()">
+      Add Todo
+    </button>
+  </form>
+  <table mat-table [dataSource]="(todos$ | async)!">
+    <ng-container matColumnDef="content">
+      <td class="cell__content" mat-cell *matCellDef="let todo">{{todo.content}}</td>
+    </ng-container>
+    <ng-container matColumnDef="mark">
+      <td class="cell__action" mat-cell *matCellDef="let todo">
+        <button type="button" mat-icon-button (click)="markTodo(todo)">
+          <ng-container *ngIf="todo.marked; else notMarked">
+            <mat-icon color="primary">close</mat-icon>
+          </ng-container>
+          <ng-template #notMarked>
+            <mat-icon color="primary">check</mat-icon>
+          </ng-template>
+        </button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="remove">
+      <td class="cell__action" mat-cell *matCellDef="let todo">
+        <button type="button" mat-icon-button (click)="removeTodo(todo)">
+          <mat-icon color="primary">delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'row__marked': row.marked}"></tr>
+  </table>
+</div>

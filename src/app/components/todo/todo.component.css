@@ -1,0 +1,29 @@
+:host {
+  width: 50%;
+}
+
+table {
+  width: 100%;
+}
+tr:hover {
+  background-color: rgba(0,0,0,.04) ;
+}
+
+.cell__content {
+  width: 95% !important;
+}
+.cell__action {
+  padding: 0 !important;
+}
+.cell__remove:hover .mat-icon {
+  color: #f44336;
+}
+.row__marked {
+  background-color: #ffd74057;
+  text-decoration-line: line-through;
+}
+.todo__page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
