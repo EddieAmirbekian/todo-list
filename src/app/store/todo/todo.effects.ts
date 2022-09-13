@@ -7,6 +7,7 @@ import {catchError, from, map, of, switchMap, withLatestFrom} from "rxjs";
 import {Todo} from "../../models/todo.model";
 import {TodoService} from "../../services/todo.service";
 import {selectAllTodos} from "./todo.selectors";
+import {userLogOut, userSignInSuccess, userSignUpSuccess} from "../user/user.actions";
 
 @Injectable()
 export class TodoEffects {
@@ -30,7 +31,7 @@ export class TodoEffects {
 
   saveTodos$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(addTodo, markTodo, removeTodo),
+      ofType(userSignInSuccess, userSignUpSuccess, userLogOut),
       withLatestFrom(this.store.select(selectAllTodos)),
       switchMap(([action, todos]) => {
         this.todoService.saveTodos(todos);
@@ -38,5 +39,5 @@ export class TodoEffects {
       })
     ),
     {dispatch: false}
-  )
+  );
 }

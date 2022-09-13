@@ -3,17 +3,17 @@ import {createReducer, on} from "@ngrx/store";
 import {addTodo, loadTodos, loadTodosFailure, loadTodosSuccess, markTodo, removeTodo} from "./todo.actions";
 import {v4 as uuid} from "uuid";
 
-export const initialState: TodoState = {
-  todos: [{id: '1', content: 'Hi', marked: false}],
+export const todosInitialState: TodoState = {
+  todos: [],
   error: null,
   status: 'pending'
 };
 
 export const todoReducer = createReducer(
-  initialState,
+  todosInitialState,
   on(addTodo, (state, {content}) => ({
     ...state,
-    todos: [...state.todos, {id: uuid(), content, marked: false}]
+    todos: [...state.todos, {id: `t-${uuid()}`, content, marked: false}]
   })),
   on(markTodo, (state, {id}) => ({
     ...state,
