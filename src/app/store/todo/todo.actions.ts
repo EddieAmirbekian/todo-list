@@ -6,6 +6,7 @@ export const enum TodoActions {
   LOAD_SUCCESS = '[ToDo API] Loaded all todos successfully',
   LOAD_FAILURE = '[ToDo API] Loading all todos has failed',
   ADD = '[ToDo Component] Add a todo',
+  MARK = '[ToDo Component] Mark todo as done',
   REMOVE = '[ToDo Component] Remove a todo',
 }
 
@@ -13,4 +14,5 @@ export const loadTodos = createAction(TodoActions.LOAD);
 export const loadTodosSuccess = createAction(TodoActions.LOAD_SUCCESS, props<{todos: Todo[]}>());
 export const loadTodosFailure = createAction(TodoActions.LOAD_FAILURE, props<{error: string}>());
 export const addTodo = createAction(TodoActions.ADD, props<{content: string}>());
+export const markTodo = createAction(TodoActions.MARK, props<{id: string}>());
 export const removeTodo = createAction(TodoActions.REMOVE, props<{id: string}>());
