@@ -83,7 +83,9 @@ export class TodoComponent implements OnInit, AfterViewInit, OnDestroy {
 
   onSort(sortState: Sort) {
     if (this.dataSource) {
-      if (sortState.direction === 'desc') {
+      if (sortState.active === 'content') {
+        this.dataSource.data = this.dataSource.data.sort((a, b) => a.content.localeCompare(b.content));
+      } else if (sortState.active === 'createDate') {
         this.dataSource.data = this.dataSource.data.sort((a, b) => a.createDate - b.createDate);
       }
     }

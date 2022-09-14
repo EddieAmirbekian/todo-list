@@ -18,7 +18,7 @@
     </form>
     <table mat-table matSort [dataSource]="dataSource || noData" (matSortChange)="onSort($event)">
       <ng-container matColumnDef="content">
-        <th mat-header-cell *matHeaderCellDef>Content</th>
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>Content</th>
         <td class="cell__content" mat-cell *matCellDef="let todo">{{todo.content}}</td>
       </ng-container>
       <ng-container matColumnDef="createDate">
