@@ -19,7 +19,7 @@ export const userInitialState: UserState = {
 export const userReducer = createReducer(
   userInitialState,
   on(userSignInSuccess, (state, {id}) => ({...state, error: null, currentUser: state.users.find((user) => user.id === id) || null})),
-  on(userSignInFailure, (state, {error}) => ({...state, error})),
+  on(userSignInFailure, (state, {error}) => ({...state, error: error})),
   on(userSignUpSuccess, (state, {id, username, password}) => ({
     ...state,
     error: null,
@@ -27,6 +27,6 @@ export const userReducer = createReducer(
     currentUser: {id, username, password}
   })),
   on(loadUsersSuccess, (state, {users, currentUser}) => ({...state, users, currentUser})),
-  on(userSignUpFailure, (state, {error}) => ({...state, error})),
+  on(userSignUpFailure, (state, {error}) => ({...state, error: error})),
   on(userLogOut, (state) => ({...state, currentUser: null}))
 );

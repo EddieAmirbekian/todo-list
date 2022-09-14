@@ -22,3 +22,15 @@ mat-card-actions {
   display: flex;
   justify-content: center;
 }
+
+.error-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin: 10px auto;
+  height: 36px;
+  border-radius: 10px;
+  background-color: #f44336;
+  color: white;
+}

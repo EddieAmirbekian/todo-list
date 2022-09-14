@@ -23,7 +23,7 @@ export class TodoEffects {
         switchMap(() => from(this.todoService.getTodos())
           .pipe(
             map((todos: Todo[]) => loadTodosSuccess({todos})),
-            catchError((error) => of(loadTodosFailure({error})))
+            catchError(({error}) => of(loadTodosFailure({error})))
           )
         )
       )

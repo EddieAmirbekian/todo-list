@@ -5,6 +5,7 @@
       <mat-card-subtitle>Sign in or sign up</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
+      <div class="error-card" *ngIf="errors$ | async as error">{{error}}</div>
       <form [formGroup]="loginForm">
         <mat-form-field appearance="outline">
           <mat-label>Username</mat-label>

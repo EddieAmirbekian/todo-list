@@ -74,7 +74,7 @@ export class UserEffects {
           this.router.navigateByUrl(`/${user.id}`);
           return userSignInSuccess(user);
         }),
-        catchError((error: string) => of(userSignInFailure({error})))
+        catchError(({error}) => of(userSignInFailure({error})))
       ))
     )
   );
@@ -84,7 +84,7 @@ export class UserEffects {
       ofType(userSignUp),
       switchMap(({username, password}) => from(this.userService.signUp({username, password})).pipe(
         map((user: User) => userSignUpSuccess(user)),
-        catchError((error: string) => of(userSignUpFailure({error})))
+        catchError(({error}) => of(userSignUpFailure({error})))
       ))
     )
   );
