@@ -13,6 +13,6 @@ export const enum TodoActions {
 export const loadTodos = createAction(TodoActions.LOAD);
 export const loadTodosSuccess = createAction(TodoActions.LOAD_SUCCESS, props<{todos: Todo[]}>());
 export const loadTodosFailure = createAction(TodoActions.LOAD_FAILURE, props<{error: string}>());
-export const addTodo = createAction(TodoActions.ADD, props<Pick<Todo, 'content'>>());
+export const addTodo = createAction(TodoActions.ADD, props<Pick<Todo, 'content' | 'userId'>>());
 export const markTodo = createAction(TodoActions.MARK, props<Pick<Todo, 'id'>>());
 export const removeTodo = createAction(TodoActions.REMOVE, props<Pick<Todo, 'id'>>());

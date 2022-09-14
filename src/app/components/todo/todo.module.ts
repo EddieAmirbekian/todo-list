@@ -9,17 +9,21 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {TodoService} from "../../services/todo.service";
+import {MatCardModule} from "@angular/material/card";
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 @NgModule({
   declarations: [TodoComponent],
   imports: [
     CommonModule,
     MatButtonModule,
+    MatCardModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
     MatPaginatorModule,
     MatTableModule,
+    MatToolbarModule,
     ReactiveFormsModule,
   ],
   exports: [TodoComponent],

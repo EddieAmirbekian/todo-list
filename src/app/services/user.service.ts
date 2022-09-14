@@ -21,6 +21,9 @@ export class UserService {
         if (idx === -1) {
           return Promise.reject({error: 'Error: User not found'});
         }
+        if (state.users[idx].password !== user.password) {
+          return Promise.reject({error: 'Error: Wrong password'});
+        }
         return Promise.resolve(state.users[idx]);
       }
     );

@@ -11,9 +11,9 @@ export const todosInitialState: TodoState = {
 
 export const todoReducer = createReducer(
   todosInitialState,
-  on(addTodo, (state, {content}) => ({
+  on(addTodo, (state, {userId, content}) => ({
     ...state,
-    todos: [...state.todos, {id: `t-${uuid()}`, content, marked: false}]
+    todos: [...state.todos, {id: `t-${uuid()}`, content, marked: false, userId}]
   })),
   on(markTodo, (state, {id}) => ({
     ...state,

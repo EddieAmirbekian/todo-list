@@ -31,7 +31,7 @@ export class TodoEffects {
 
   saveTodos$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(userSignInSuccess, userSignUpSuccess, userLogOut),
+      ofType(addTodo, removeTodo, markTodo),
       withLatestFrom(this.store.select(selectAllTodos)),
       switchMap(([action, todos]) => {
         this.todoService.saveTodos(todos);

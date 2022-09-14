@@ -22,7 +22,7 @@ table {
   width: 100%;
 }
 
-tr:hover {
+tr:not(.row__marked):hover {
   background-color: rgba(0, 0, 0, .04);
 }
 
@@ -39,12 +39,20 @@ tr:hover {
 }
 
 .row__marked {
-  background-color: #ffd74057;
+  background-color: #f4433657;
   text-decoration-line: line-through;
 }
 
-.todo__page {
+.spacer {
+  flex: 1 1 auto;
+}
+
+.todo__page mat-card {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.todo__add {
+  margin-top: 1rem;
 }

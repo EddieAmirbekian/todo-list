@@ -13,12 +13,14 @@ import {TodoEffects} from "./store/todo/todo.effects";
 import {userReducer} from "./store/user/user.reducer";
 import {UserEffects} from "./store/user/user.effects";
 import {LoginModule} from "./components/login/login.module";
+import {AppRoutingModule} from "./app-routing.module";
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({
