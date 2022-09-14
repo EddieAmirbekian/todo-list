@@ -13,7 +13,7 @@ export const todoReducer = createReducer(
   todosInitialState,
   on(addTodo, (state, {userId, content}) => ({
     ...state,
-    todos: [...state.todos, {id: `t-${uuid()}`, content, marked: false, userId}]
+    todos: [...state.todos, {id: `t-${uuid()}`, content, marked: false, createDate: new Date().getTime(), userId}]
   })),
   on(markTodo, (state, {id}) => ({
     ...state,

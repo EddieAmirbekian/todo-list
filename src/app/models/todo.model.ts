@@ -3,4 +3,5 @@ export interface Todo {
   content: string;
   marked: boolean;
   userId: string;
+  createDate: number;
 }

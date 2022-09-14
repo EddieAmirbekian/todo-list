@@ -22,12 +22,12 @@ table {
   width: 100%;
 }
 
-tr:not(.row__marked):hover {
+tr:not(.row__marked):not(.table-header):hover {
   background-color: rgba(0, 0, 0, .04);
 }
 
 .cell__content {
-  width: 95% !important;
+  width: 45% !important;
 }
 
 .cell__action {

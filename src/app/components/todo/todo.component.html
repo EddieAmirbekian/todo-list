@@ -11,19 +11,22 @@
       <b>To-Do List</b>
     </h1>
     <form (submit)="addTodo()">
-      <mat-form-field appearance="fill">
-        <mat-label>Content</mat-label>
-        <input matInput placeholder="Enter todo content" [formControl]="todoControl"/>
+      <mat-form-field appearance="legacy">
+        <mat-label>Search</mat-label>
+        <input matInput placeholder="Search for a todo" [formControl]="searchTodoControl"/>
       </mat-form-field>
-      <button class="todo__add" type="button" mat-raised-button color="primary" (click)="addTodo()">
-        Add Todo
-      </button>
     </form>
-    <table mat-table [dataSource]="(todos$ | async)!">
+    <table mat-table matSort [dataSource]="dataSource || noData" (matSortChange)="onSort($event)">
       <ng-container matColumnDef="content">
+        <th mat-header-cell *matHeaderCellDef>Content</th>
         <td class="cell__content" mat-cell *matCellDef="let todo">{{todo.content}}</td>
       </ng-container>
+      <ng-container matColumnDef="createDate">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>Created Date</th>
+        <td class="cell__content" mat-cell *matCellDef="let todo">{{todo.createDate | date}}</td>
+      </ng-container>
       <ng-container matColumnDef="mark">
+        <th mat-header-cell *matHeaderCellDef></th>
         <td class="cell__action" mat-cell *matCellDef="let todo">
           <button type="button" mat-icon-button (click)="markTodo(todo)">
             <ng-container *ngIf="todo.marked; else notMarked">
@@ -36,13 +39,26 @@
         </td>
       </ng-container>
       <ng-container matColumnDef="remove">
+        <th mat-header-cell *matHeaderCellDef></th>
         <td class="cell__action" mat-cell *matCellDef="let todo">
           <button type="button" mat-icon-button (click)="removeTodo(todo)">
             <mat-icon color="primary">delete</mat-icon>
           </button>
         </td>
       </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns" class="table-header"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'row__marked': row.marked}"></tr>
     </table>
+    <mat-paginator [length]="dataSource?.data?.length" [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons></mat-paginator>
+    <form (submit)="addTodo()">
+      <mat-form-field appearance="fill">
+        <mat-label>Content</mat-label>
+        <input matInput placeholder="Enter todo content" [formControl]="addTodoControl"/>
+      </mat-form-field>
+      <button class="todo__add" type="button" mat-raised-button color="primary" (click)="addTodo()">
+        Add Todo
+      </button>
+    </form>
   </mat-card>
 </div>

@@ -11,6 +11,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {TodoService} from "../../services/todo.service";
 import {MatCardModule} from "@angular/material/card";
 import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatSortModule} from "@angular/material/sort";
 
 @NgModule({
   declarations: [TodoComponent],
@@ -22,6 +23,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     MatIconModule,
     MatInputModule,
     MatPaginatorModule,
+    MatSortModule,
     MatTableModule,
     MatToolbarModule,
     ReactiveFormsModule,

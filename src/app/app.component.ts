@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {AppState} from "./store/app.state";
-import {loadUsers} from "./store/user/user.actions";
+import {loadUsers, userNavigate} from "./store/user/user.actions";
 
 @Component({
   selector: 'app-root',
@@ -18,5 +18,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(loadUsers());
+    this.store.dispatch(userNavigate());
   }
 }
