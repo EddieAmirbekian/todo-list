@@ -12,12 +12,11 @@ import {todoReducer} from "./store/todo/todo.reducer";
 import {TodoEffects} from "./store/todo/todo.effects";
 import {userReducer} from "./store/user/user.reducer";
 import {UserEffects} from "./store/user/user.effects";
-import { LoginComponent } from './components/login/login.component';
+import {LoginModule} from "./components/login/login.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +26,7 @@ import { LoginComponent } from './components/login/login.component';
       users: userReducer,
     }),
     EffectsModule.forRoot([TodoEffects, UserEffects]),
+    LoginModule,
     TodoModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
