@@ -1,5 +1,5 @@
 :host {
-  width: 50%;
+  min-width: 60%;
 }
 
 form {
@@ -55,4 +55,5 @@ tr:not(.row__marked):not(.table-header):hover {
 
 .todo__add {
   margin-top: 1rem;
+  min-width: 50%;
 }
