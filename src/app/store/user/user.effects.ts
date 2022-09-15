@@ -14,9 +14,6 @@ import {
 } from "./user.actions";
 import {catchError, from, map, of, switchMap, tap, withLatestFrom} from "rxjs";
 import {User} from "../../models/user.model";
-import {UserState} from "./user.state";
-import {addTodo, markTodo, removeTodo} from "../todo/todo.actions";
-import {selectAllTodos} from "../todo/todo.selectors";
 import {selectAllUserInfo, selectCurrentUser} from "./user.selectors";
 import {Router} from "@angular/router";
 
@@ -83,7 +80,10 @@ export class UserEffects {
     this.actions$.pipe(
       ofType(userSignUp),
       switchMap(({username, password}) => from(this.userService.signUp({username, password})).pipe(
-        map((user: User) => userSignUpSuccess(user)),
+        map((user: User) => {
+          this.router.navigateByUrl(`/${user.id}`);
+          return userSignUpSuccess(user);
+        }),
         catchError(({error}) => of(userSignUpFailure({error})))
       ))
     )

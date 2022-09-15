@@ -16,10 +16,6 @@ export const selectUserError = createSelector(
   selectUsers,
   (state: UserState) => state.error
 );
-export const selectUserById = (id: string) => createSelector(
-  selectUsers,
-  (state: UserState) => state.users.find((user: User) => user.id === id)
-);
 export const selectAllUserInfo = createSelector(
   selectUsers,
   ({users, currentUser}) => ({users, currentUser})

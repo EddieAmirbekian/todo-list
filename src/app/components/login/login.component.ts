@@ -1,4 +1,4 @@
-import {Component, DoCheck, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AppState} from "../../store/app.state";
 import {Store} from "@ngrx/store";
@@ -53,15 +53,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   signUp(): void {
     if (!this.loginForm.invalid) {
       this.store.dispatch(userSignUp(this.loginForm.value));
-      this.store.dispatch(userNavigate());
     }
-  }
-
-  private goToUser(id: string): void {
-    this.router.navigateByUrl(`/${id}`);
-  }
-
-  private goToLogin(): void {
-    this.router.navigateByUrl('/login');
   }
 }

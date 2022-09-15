@@ -2,8 +2,8 @@ import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from "@angular/c
 import {Todo} from "../../models/todo.model";
 import {Store} from "@ngrx/store";
 import {addTodo, loadTodos, markTodo, removeTodo} from "../../store/todo/todo.actions";
-import {debounceTime, distinctUntilChanged, Observable, of, Subject, switchMap, takeUntil} from "rxjs";
-import {selectAllTodos, selectTodosByUserId} from "../../store/todo/todo.selectors";
+import {distinctUntilChanged, Observable, of, Subject, switchMap, takeUntil} from "rxjs";
+import {selectTodosByUserId} from "../../store/todo/todo.selectors";
 import {AppState} from "../../store/app.state";
 import {FormControl, Validators} from "@angular/forms";
 import {User} from "../../models/user.model";

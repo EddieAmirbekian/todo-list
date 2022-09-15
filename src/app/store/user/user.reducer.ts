@@ -3,7 +3,6 @@ import {UserState} from "./user.state";
 import {
   loadUsersSuccess,
   userLogOut,
-  userSignIn,
   userSignInFailure,
   userSignInSuccess,
   userSignUpFailure,
@@ -18,7 +17,11 @@ export const userInitialState: UserState = {
 
 export const userReducer = createReducer(
   userInitialState,
-  on(userSignInSuccess, (state, {id}) => ({...state, error: null, currentUser: state.users.find((user) => user.id === id) || null})),
+  on(userSignInSuccess, (state, {id}) => ({
+    ...state,
+    error: null,
+    currentUser: state.users.find((user) => user.id === id) || null
+  })),
   on(userSignInFailure, (state, {error}) => ({...state, error: error})),
   on(userSignUpSuccess, (state, {id, username, password}) => ({
     ...state,
